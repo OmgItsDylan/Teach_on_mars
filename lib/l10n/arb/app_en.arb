@@ -1,0 +1,35 @@
+{
+  "@@locale": "en",
+  "counterAppBarTitle": "Counter",
+  "@counterAppBarTitle": {
+    "description": "Text shown in the AppBar of the Counter Page"
+  },
+  "postsAppBarTitle": "My feed",
+  "@postsAppBarTitle": {
+    "description": "posts app bar title"
+  },
+  "postsImageTitle": "Image",
+  "@postsImageTitle": {
+    "description": "posts image title"
+  },
+  "postsArticleTitle": "Article",
+  "@postsArticleTitle": {
+    "description": "posts article title"
+  },
+  "postTitleError": "No title was given or an error has occurred",
+  "@postTitleError": {
+    "description": "posts title error"
+  },
+  "seeMoreButton": "See more",
+  "@seeMoreButton": {
+    "description": "see more button text"
+  },
+  "errorFetchMsg": "Something went wrong, please try again in a moment.",
+  "@errorFetchMsg": {
+    "description": "error fetch message"
+  },
+  "tryAgain": "Try again",
+  "@tryAgain": {
+    "description": "try again message"
+  }
+}
