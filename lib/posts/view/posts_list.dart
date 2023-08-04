@@ -142,6 +142,7 @@ class _PostsListState extends State<PostsList> {
     _scrollController
       ..removeListener(_onScroll)
       ..dispose();
+
     super.dispose();
   }
 }

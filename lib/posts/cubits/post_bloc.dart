@@ -28,17 +28,11 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
     } catch (e) {
       emit(state.copyWith(status: PostsStatus.failure));
     }
+  }
 
-    // emit(state.copyWith(status: PostsStatus.loading));
-    // try {
-    //   final posts = await _postsRepository.fetchPosts();
-    //   emit(state.copyWith(
-    //     status: PostsStatus.success,
-    //     posts: posts,
-    //     hasReachedMax: false,
-    //   ));
-    // } catch (_) {
-    //   emit(state.copyWith(status: PostsStatus.failure));
-    // }
+  @override
+  Future<void> close() {
+    _repository.dispose();
+    return super.close();
   }
 }

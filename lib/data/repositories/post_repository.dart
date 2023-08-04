@@ -6,11 +6,16 @@ import 'package:teach_on_mars_test/data/models/post/post_model.dart';
 
 class PostsRepository {
   PostsRepository() {
-    box = Hive.lazyBox('posts');
+    init();
   }
-  late LazyBox<List<Map<String, dynamic>>> box;
+
+  late Box<List<Map<String, dynamic>>> box;
 
   final List<PostModel> _posts = [];
+
+  Future<void> init() async {
+    box = await Hive.openBox<List<Map<String, dynamic>>>('posts');
+  }
 
   Future<List<PostModel>> fetchPosts() async {
     await getNewPostsFromApi();
@@ -48,5 +53,13 @@ class PostsRepository {
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  Future<void> clearCache() async {
+    await box.clear();
+  }
+
+  void dispose() {
+    box.close();
   }
 }
