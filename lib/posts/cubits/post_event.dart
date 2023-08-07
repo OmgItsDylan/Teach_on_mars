@@ -7,3 +7,5 @@ sealed class PostsEvent extends Equatable {
 }
 
 class FetchPosts extends PostsEvent {}
+
+class InitialFetchPosts extends PostsEvent {}

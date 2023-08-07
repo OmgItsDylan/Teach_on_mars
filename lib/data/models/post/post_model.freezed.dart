@@ -20,12 +20,19 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
+  @HiveField(0)
   String? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   int? get type => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get title => throw _privateConstructorUsedError;
+  @HiveField(3)
   PictureModel? get picture => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get author => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get excerpt => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get text => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,13 +47,13 @@ abstract class $PostModelCopyWith<$Res> {
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
   $Res call(
-      {String? id,
-      int? type,
-      String? title,
-      PictureModel? picture,
-      String? author,
-      String? excerpt,
-      String? text});
+      {@HiveField(0) String? id,
+      @HiveField(1) int? type,
+      @HiveField(2) String? title,
+      @HiveField(3) PictureModel? picture,
+      @HiveField(4) String? author,
+      @HiveField(5) String? excerpt,
+      @HiveField(6) String? text});
 
   $PictureModelCopyWith<$Res>? get picture;
 }
@@ -125,13 +132,13 @@ abstract class _$$_PostModelCopyWith<$Res> implements $PostModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? id,
-      int? type,
-      String? title,
-      PictureModel? picture,
-      String? author,
-      String? excerpt,
-      String? text});
+      {@HiveField(0) String? id,
+      @HiveField(1) int? type,
+      @HiveField(2) String? title,
+      @HiveField(3) PictureModel? picture,
+      @HiveField(4) String? author,
+      @HiveField(5) String? excerpt,
+      @HiveField(6) String? text});
 
   @override
   $PictureModelCopyWith<$Res>? get picture;
@@ -191,32 +198,41 @@ class __$$_PostModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PostModel implements _PostModel {
+@HiveType(typeId: 0)
+class _$_PostModel extends _PostModel {
   _$_PostModel(
-      {this.id,
-      this.type,
-      this.title,
-      this.picture,
-      this.author,
-      this.excerpt,
-      this.text});
+      {@HiveField(0) this.id,
+      @HiveField(1) this.type,
+      @HiveField(2) this.title,
+      @HiveField(3) this.picture,
+      @HiveField(4) this.author,
+      @HiveField(5) this.excerpt,
+      @HiveField(6) this.text})
+      : super._();
 
   factory _$_PostModel.fromJson(Map<String, dynamic> json) =>
       _$$_PostModelFromJson(json);
 
   @override
+  @HiveField(0)
   final String? id;
   @override
+  @HiveField(1)
   final int? type;
   @override
+  @HiveField(2)
   final String? title;
   @override
+  @HiveField(3)
   final PictureModel? picture;
   @override
+  @HiveField(4)
   final String? author;
   @override
+  @HiveField(5)
   final String? excerpt;
   @override
+  @HiveField(6)
   final String? text;
 
   @override
@@ -257,32 +273,40 @@ class _$_PostModel implements _PostModel {
   }
 }
 
-abstract class _PostModel implements PostModel {
+abstract class _PostModel extends PostModel {
   factory _PostModel(
-      {final String? id,
-      final int? type,
-      final String? title,
-      final PictureModel? picture,
-      final String? author,
-      final String? excerpt,
-      final String? text}) = _$_PostModel;
+      {@HiveField(0) final String? id,
+      @HiveField(1) final int? type,
+      @HiveField(2) final String? title,
+      @HiveField(3) final PictureModel? picture,
+      @HiveField(4) final String? author,
+      @HiveField(5) final String? excerpt,
+      @HiveField(6) final String? text}) = _$_PostModel;
+  _PostModel._() : super._();
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$_PostModel.fromJson;
 
   @override
+  @HiveField(0)
   String? get id;
   @override
+  @HiveField(1)
   int? get type;
   @override
+  @HiveField(2)
   String? get title;
   @override
+  @HiveField(3)
   PictureModel? get picture;
   @override
+  @HiveField(4)
   String? get author;
   @override
+  @HiveField(5)
   String? get excerpt;
   @override
+  @HiveField(6)
   String? get text;
   @override
   @JsonKey(ignore: true)

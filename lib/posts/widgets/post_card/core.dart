@@ -3,8 +3,6 @@ import 'package:teach_on_mars_test/data/models/post/post_model.dart';
 import 'package:teach_on_mars_test/l10n/l10n.dart';
 import 'package:teach_on_mars_test/posts/widgets/button/core.dart';
 import 'package:teach_on_mars_test/posts/widgets/post_card/components/image_container.dart';
-import 'package:teach_on_mars_test/theme/app_color.dart';
-import 'package:teach_on_mars_test/theme/app_textstyle.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({required this.model, super.key, this.onPressed});
@@ -20,7 +18,7 @@ class PostCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: AppColor.postCardBackgroundColor,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
@@ -28,7 +26,7 @@ class PostCard extends StatelessWidget {
           children: [
             Text(
               model.title ?? l10n.postTitleError,
-              style: AppTextStyle.postCardTitleTextStyle,
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 10),
             contentBody(context, model.type ?? 0),
@@ -46,7 +44,7 @@ class PostCard extends StatelessWidget {
           children: [
             Text(
               model.excerpt ?? '',
-              style: AppTextStyle.postCardBodyTextStyle,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 10),
             Button.primary(
@@ -62,7 +60,7 @@ class PostCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               model.author ?? '',
-              style: AppTextStyle.postCardBodyTextStyle,
+              style: Theme.of(context).textTheme.bodySmall,
               maxLines: 1,
             ),
           ],

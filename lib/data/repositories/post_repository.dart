@@ -1,20 +1,21 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:teach_on_mars_test/data/models/post/post_model.dart';
+import 'package:uuid/uuid.dart';
 
 class PostsRepository {
-  PostsRepository() {
-    init();
-  }
+  PostsRepository();
 
-  late Box<List<Map<String, dynamic>>> box;
+  late Box<PostModel> box;
 
   final List<PostModel> _posts = [];
 
-  Future<void> init() async {
-    box = await Hive.openBox<List<Map<String, dynamic>>>('posts');
+  Future<void> initHive() async {
+    box = await Hive.openBox<PostModel>('posts');
+    // await clearCache();
   }
 
   Future<List<PostModel>> fetchPosts() async {
@@ -24,17 +25,29 @@ class PostsRepository {
   }
 
   Future<void> getCachedPosts() async {
-    final tmp = await box.get('posts');
+    final tmp = box.values.toList();
 
-    if (tmp != null && tmp.isNotEmpty) {
+    if (tmp.isNotEmpty) {
       for (final post in tmp) {
-        _posts.add(PostModel.fromJson(post));
+        _posts.add(post);
       }
     }
   }
 
-  Future<void> cachePosts() async {
-    await box.put('posts', _posts.map((post) => post.toJson()).toList());
+  Future<List<PostModel>> getInitialPostsFromApi() async {
+    try {
+      await initHive();
+      await getCachedPosts();
+      if (_posts.isEmpty) {
+        await getNewPostsFromApi();
+      }
+      if (_posts.isEmpty) {
+        throw Exception('Failed to load posts');
+      }
+      return _posts;
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   Future<void> getNewPostsFromApi() async {
@@ -44,8 +57,13 @@ class PostsRepository {
         final postsJson = jsonDecode(response.body) as List<dynamic>;
 
         final tmp = postsJson.map((postJson) {
-          return PostModel.fromJson(postJson as Map<String, dynamic>);
+          final res = PostModel.fromJson(postJson as Map<String, dynamic>);
+
+          return res.copyWith(
+            id: res.id! + const Uuid().v4(),
+          );
         }).toList();
+        unawaited(box.addAll(tmp));
         _posts.addAll(tmp);
       } else {
         throw Exception('Failed to load posts');

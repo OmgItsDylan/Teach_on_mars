@@ -10,7 +10,6 @@ import 'package:teach_on_mars_test/posts/view/post_detail_page.dart';
 import 'package:teach_on_mars_test/posts/widgets/button/core.dart';
 import 'package:teach_on_mars_test/posts/widgets/loader_widge/core.dart';
 import 'package:teach_on_mars_test/posts/widgets/post_card/core.dart';
-import 'package:teach_on_mars_test/theme/app_color.dart';
 
 class PostsList extends StatefulWidget {
   const PostsList({super.key});
@@ -32,7 +31,7 @@ class _PostsListState extends State<PostsList> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return ColoredBox(
-      color: AppColor.postsListBackgroundColor,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: BlocBuilder<PostsBloc, PostsState>(
         builder: (context, state) {
           switch (state.status) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:teach_on_mars_test/posts/widgets/loader_widge/core.dart';
-import 'package:teach_on_mars_test/theme/app_textstyle.dart';
 
 enum ButtonType { primary, back }
 
@@ -71,18 +70,17 @@ class _ButtonState extends State<Button> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        if (mounted && !isLoading) setState(() => isLoading = true);
-        await widget.onPressed?.call();
-        if (mounted && isLoading) setState(() => isLoading = false);
-      },
-      child: () {
-        switch (widget.type) {
-          case ButtonType.primary:
-            return Container(
+    return () {
+      switch (widget.type) {
+        case ButtonType.primary:
+          return FilledButton(
+            onPressed: () async {
+              if (mounted && !isLoading) setState(() => isLoading = true);
+              await widget.onPressed?.call();
+              if (mounted && isLoading) setState(() => isLoading = false);
+            },
+            child: SizedBox(
               height: widget.height ?? 40,
-              decoration: widget.decoration,
               child: Center(
                 child: isLoading
                     ? LoaderWidget(
@@ -91,27 +89,34 @@ class _ButtonState extends State<Button> {
                       )
                     : Text(
                         widget.label,
-                        style: widget.textStyle ?? AppTextStyle.primaryButtonTextStyle,
+                        style: widget.textStyle ?? Theme.of(context).textTheme.labelLarge,
                       ),
               ),
-            );
-          case ButtonType.back:
-            return Padding(
+            ),
+          );
+        case ButtonType.back:
+          return InkWell(
+            onTap: () async {
+              if (mounted && !isLoading) setState(() => isLoading = true);
+              await widget.onPressed?.call();
+              if (mounted && isLoading) setState(() => isLoading = false);
+            },
+            child: Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Container(
                 width: widget.height ?? 40,
                 height: widget.height ?? 40,
                 padding: const EdgeInsets.all(8),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.arrow_back_rounded,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
               ),
-            );
-        }
-      }(),
-    );
+            ),
+          );
+      }
+    }();
   }
 }

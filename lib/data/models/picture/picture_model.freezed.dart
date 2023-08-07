@@ -20,8 +20,11 @@ PictureModel _$PictureModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PictureModel {
+  @HiveField(0)
   int? get width => throw _privateConstructorUsedError;
+  @HiveField(1)
   int? get height => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +39,10 @@ abstract class $PictureModelCopyWith<$Res> {
           PictureModel value, $Res Function(PictureModel) then) =
       _$PictureModelCopyWithImpl<$Res, PictureModel>;
   @useResult
-  $Res call({int? width, int? height, String? url});
+  $Res call(
+      {@HiveField(0) int? width,
+      @HiveField(1) int? height,
+      @HiveField(2) String? url});
 }
 
 /// @nodoc
@@ -81,7 +87,10 @@ abstract class _$$_PictureModelCopyWith<$Res>
       __$$_PictureModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? width, int? height, String? url});
+  $Res call(
+      {@HiveField(0) int? width,
+      @HiveField(1) int? height,
+      @HiveField(2) String? url});
 }
 
 /// @nodoc
@@ -118,17 +127,24 @@ class __$$_PictureModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1)
 class _$_PictureModel implements _PictureModel {
-  _$_PictureModel({this.width, this.height, this.url});
+  _$_PictureModel(
+      {@HiveField(0) this.width,
+      @HiveField(1) this.height,
+      @HiveField(2) this.url});
 
   factory _$_PictureModel.fromJson(Map<String, dynamic> json) =>
       _$$_PictureModelFromJson(json);
 
   @override
+  @HiveField(0)
   final int? width;
   @override
+  @HiveField(1)
   final int? height;
   @override
+  @HiveField(2)
   final String? url;
 
   @override
@@ -166,18 +182,21 @@ class _$_PictureModel implements _PictureModel {
 
 abstract class _PictureModel implements PictureModel {
   factory _PictureModel(
-      {final int? width,
-      final int? height,
-      final String? url}) = _$_PictureModel;
+      {@HiveField(0) final int? width,
+      @HiveField(1) final int? height,
+      @HiveField(2) final String? url}) = _$_PictureModel;
 
   factory _PictureModel.fromJson(Map<String, dynamic> json) =
       _$_PictureModel.fromJson;
 
   @override
+  @HiveField(0)
   int? get width;
   @override
+  @HiveField(1)
   int? get height;
   @override
+  @HiveField(2)
   String? get url;
   @override
   @JsonKey(ignore: true)

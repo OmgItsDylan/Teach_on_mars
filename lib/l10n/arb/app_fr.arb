@@ -31,5 +31,9 @@
   "tryAgain": "Réessayer",
   "@tryAgain": {
     "description": "try again message"
+  },
+  "drawerHeaderTitle": "Menu",
+  "@drawerHeaderTitle": {
+    "description": "drawer title"
   }
 }

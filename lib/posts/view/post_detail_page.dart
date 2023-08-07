@@ -30,14 +30,17 @@ class PostDetailPage extends StatelessWidget {
               onPressed: () async => Navigator.of(context).pop(),
             ),
             const SizedBox(width: 8),
-            Text(title, style: AppTextStyle.appBarTextStyle),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
           ],
         ),
       ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: Colors.white,
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: model.type == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.center,
@@ -57,7 +60,7 @@ class PostDetailPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   model.title ?? l10n.postTitleError,
-                  style: AppTextStyle.postCardTitleTextStyle,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
               if (model.type == 1) ...[
